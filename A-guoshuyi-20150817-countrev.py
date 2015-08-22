@@ -7,11 +7,11 @@ def Count(read_me):
             d[i] += 1
         else:
             d[i] = 1
-    d2 = {}
-    for Word,Count in d.items():
-        d2[Count] = Word
+#    d2 = {}
+#    for Word,Count in d.items():
+#        d2[Count] = Word
     
-    l1 = d2.keys()
+    l1 = d.values()
     l1.sort()
     for i in l1[-2:-12:-1]:
         print d2[i],i
