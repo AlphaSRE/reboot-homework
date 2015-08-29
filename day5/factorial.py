@@ -4,7 +4,7 @@ def f1(n):
         i *= j
     return i
 
-print f1(3)
+print f1(5)
 
 def f2(n):
     if n > 1:
@@ -12,9 +12,9 @@ def f2(n):
     else:
         return 1
 
-print f2(3)
+print f2(5)
 
 def f3(n):
     return reduce(lambda x,y: x*y,range(1,n+1))
 
-print f3(3)
+print f3(5)
