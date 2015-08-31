@@ -1,0 +1,129 @@
+y = sin(x)
+
+1、函数意义：是为了解决特殊场景的问题，同时形成一个普遍的知识
+
+2、输入，有一定的要求，需要有一定的取值范围，同时可以有多个输入
+
+3、一定要有输出，否则这个函数是没有意义的
+
+4、输出也是有定义的
+
+
+除了第三点，程序里面的函数定义是和数学上可以类比的，为了方便代码的复用
+
+1、函数可以没有输入和输出
+
+2、函数可以被重复调用和声明，以最新一次申明为准
+
+3、我们用return来申明函数的返回值，并且返回值可以是任意的类型，并且不用申明
+
+4、函数一旦return之后，后面的代码就不执行了。也就是说，除非你需要在函数中间return，否则return最好写在函数的最后，这样容易避免很多问题
+
+5、函数的参数可以理解为一个变量，在调用的时候，可以认为是在对参数赋值
+
+6、对一个函数调用，需要考虑它对参数本身的影响。一个变量，作为参数传入函数的时候，它本身有没有被改变，这个是我们关心的
+
+7、对于字符串这种不可改变的参数，其本身是不会被改变的。但是对于list或者dict，是一定会被改变的。也就是说，对于dict或者list，我们可以认为是在讲其引用传递给函数
+
+8、如果不想改变dict或者list本身，那么需要首先复制，然后才传入函数
+
+9、多个参数的处理
+    * 我们的传入参数个数，一定要和函数声明的参数个数相同，但是没有类型对应的关系
+    * 参数的位置是有意义的，也就是说传入实参是按照顺序去对应函数参数的，跟参数名无关，这个叫位置参数，即传入参数是按照位置赋值的
+    * 我们在做函数调用的时候，如果指定参数赋值调用，则位置参数不再起作用，这个就是关键字参数。可以灵活的实现参数赋值，而不用考虑参数本身在函数声明时候的顺序。也就是说，关键字参数调用，与参数本身的位置无关
+    * 我们在声明函数的时候，可以对参数进行赋值，这个时候，可以认为它是参数的默认值
+    * 在设置默认值参数的时候，有默认值的参数应该放在后面
+    * 对于默认值参数来说，如果在调用的时候，有传入实参，则默认值被替换，否则使用这个默认值
+
+10、可以使用*来实现任意数量的参数输入，这里叫收集参数。但是这个输入的tuple，最好是没有嵌套的。如果有的话，有些运算则没办法支持
+
+11、对于收集参数，如果参数当做参数输入，参数前加上*可以实现收集参数的效果，参考下面的示例
+>>> def addParams(*params):
+...    for i in params:
+...         print i
+... 
+>>> 
+>>> para = (1,2,(1,2))
+>>> addParams(para)
+(1, 2, (1, 2))
+>>> addParams(*para)
+1
+2
+(1, 2)
+
+
+11、收集参数不好的地方就是带来了输入参数的不确定性，程序需要处理。尤其是在位置参数和收集参数混合使用的时候。并且收集参数没办法和关键字参数混合用
+
+12、用变量去做**收集参数的话，调用的时候，参数前一定要加上**
+
+13、和位置参数一样，也可以先定义确认的参数，不确定的用** 收集。**同时这里面的位置参数可以指定默认值，可以和关键字参数混用，但是可能会出现重复定义参数的问题
+
+>>> def print_params1(name = 'subin', *params):
+...     print name
+...     print params
+... 
+>>> print_params1()
+subin
+()
+>>> print_params1('wd')
+wd
+()
+>>> print_params1('wd', 1)
+wd
+(1,)
+>>> print_params1('wd', 1, 2)
+wd
+(1, 2)
+>>> print_params1(name = 'wd', 1, 2)
+  File "<stdin>", line 1
+SyntaxError: non-keyword arg after keyword arg
+>>> print_params(name = 'wd', age = 20)
+wd
+{'age': 20}
+>>> print_params(name = 'wd', age = 20, work = 'teacher')
+wd
+{'age': 20, 'work': 'teacher'}
+>>> print_params(wd, age = 20, work = 'teacher')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'wd' is not defined
+>>> print_params('wd', age = 20, work = 'teacher')
+wd
+{'age': 20, 'work': 'teacher'}
+>>> print_params('wd', age = 20, work = 'teacher', name = 'subin')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: print_params() got multiple values for keyword argument 'name'
+>>> print_params(name = 'wd', age = 20, work = 'teacher', name = 'subin')
+  File "<stdin>", line 1
+SyntaxError: keyword argument repeated
+
+14、变量的作用域的意思即它的可见范围
+
+15、global声明的时候，和变量定义的位置就没有关系了，但是我们建议还是在函数外部定义，比较有可读性
+
+16、但是声明global的位置是有讲究的，在函数外部声明，影响不了函数内部。也就是说函数内部同名的变量的作用域依然是这个函数
+
+17、函数的参数只能是局部变量（对于不可变元素），也就是说，对和函数的参数同名的传入参数，如果声明了全局变量，则会报错
+
+18、递归函数，可以认为是一个循环在调用自己的函数，但是一定要有一个终止条件
+
+19、函数的参数，可以是函数，这里面的函数是函数本身，而不是函数return值
+
+20、对于Filter函数，第一个参数function的返回值一定是一个bool值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

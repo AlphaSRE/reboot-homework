@@ -1,0 +1,142 @@
+with open('/home/share/www_access_20140823.log') as f:
+    accessDict = {}
+    for oneAccess in f.readlines():
+        oneAccessList = oneAccess.split(' ')
+        accessDictKey = (oneAccessList[8],oneAccessList[6],oneAccessList[0])
+        if accessDictKey in accessDict:
+            accessDict[accessDictKey] += 1
+        else:
+            accessDict[accessDictKey] = 1
+
+for k,v in accessDict.items():
+    print [k[0],k[1],(k[2],v)]
+
+首先会有一个查找key的过程，并且这个过程是比较慢的
+
+d = {
+
+status: {
+	url:{
+		ip: num
+	}	
+     },
+}
+
+200:{
+	"/data/uploads/2013/0422/08/51748b0ef04e8.JPG":{
+		"42.92.56.130":2	
+	}，
+	"/data/uploads/2013/0422/08/51748b0ef04e8.JPG":{
+		"42.92.56.132":1
+	}
+     }，	
+
+404:{
+	"/data/uploads/2013/0424/14/51777eaea5036.JPG": {
+		"42.92.56.131":1
+	}
+    }
+}
+
+for status in d:
+    for url in staus:
+        for ip in url:
+
+排序的关键字：
+list[2][1]
+
+
+42.92.56.130 - - [23/Aug/2014:23:58:56 +0800] "GET /data/uploads/2013/0422/08/51748b0ef04e8.JPG HTTP/1.1" 200
+
+42.92.56.130 - - [23/Aug/2014:23:58:45 +0800] "GET /data/uploads/2013/0422/08/51748b0ef04e8.JPG HTTP/1.1" 200
+
+42.92.56.132 - - [23/Aug/2014:23:58:45 +0800] "GET /data/uploads/2013/0424/14/51777eaea5036.JPG HTTP/1.1" 200
+
+42.92.56.131 - - [23/Aug/2014:23:58:45 +0800] "GET /data/uploads/2013/0424/14/51777eaea5036.JPG HTTP/1.1" 404
+
+
+f = open('www_access_20140823.log','r')
+Lines = f.readlines()
+f.close()
+dic = {}
+for L in Lines:
+    L1 = L.split(' ')
+    key = (L1[8],L1[6])
+    if key not in dic:
+        dic[key] = [L1[0],1]
+    else:
+        L2 = dic[key]
+        L2[1] = L2[1] + 1
+#print dic
+new_f = open('6','a+')
+for k in dic:
+    num = [k[0],k[1],(dic[k][0],dic[k][1])]
+    num1 = str(num)
+    new_f.write(num1)
+    new_f.write('\n')
+new_f.close()
+
+
+(status, url) : [ip, number]
+
+
+f1 = open('www_access_20140823.log')
+dict1 = {}
+
+for line in f1.readlines():
+    tmp = line.split(' ')
+    if tmp[0] not in dict1:
+        dict1[tmp[0]] = [tmp[8],tmp[6],[tmp[0],1]] 
+    else:
+        dict1[tmp[0]][2][1] = dict1[tmp[0]][2][1] + 1
+f1.close()
+        
+f2 = open('access.log','a+')
+for i in dict1:
+    dict1[i][2] = tuple(dict1[i][2])
+    f2.write(str(dict1[i]) + '\n')
+f2.close()
+
+
+tmp[0]是ip
+tmp[8]是状态码
+tmp[6]是url
+
+d = {
+ip : [status, url, [ip, count]]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
