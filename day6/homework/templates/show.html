@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <table border="1">
+    {% for name,age in users.iteritems() %}
+      <tr>
+        <td>{{ name }}</td>
+        <td>{{ age }}</td>
+        <td><a href="http://10.2.86.170:40000/delete?name={{ name }}">delete</a></td>
+      </tr>
+    {% endfor %}
+    </table>
+    <a href="http://10.2.86.170:40000/">index</a>
+  <body>
+</html>
