@@ -1,0 +1,147 @@
+前端
+
+
+* html
+	* 内容
+	* 
+* css
+	* 样式
+	* bootstrap
+* javascript
+	* 动态效果 数据交互
+
+# javascript 语法
+
+数据类型     python
+	数字 -》 数字
+	字符串 -》 字符串
+	数组
+	对象
+	布尔
+	函数
+	function(){
+		
+	}
+	if(){
+
+	}else{
+
+	}
+jquery:
+
+	$('选择器')函数
+
+		找到元素
+			#id
+			.class
+			tagname
+			next
+			prev
+			find 查找子元素 传入一个选择器
+			end
+
+		操作元素
+			$('选择器').操作函数（）
+
+			html() 
+			html('asd')
+			html('<button>asd<tton>')
+
+			val() 获取输入的值
+			val('123') 修改值
+
+			attr('type') 获取这个属性的值
+			attr('abc','asd')
+			removeAttr()
+
+			show(num)
+			hide(num)
+			css('color','red')
+
+			addClass()
+			removeClass()
+
+
+			on('click',function(){
+				$(this).addClass().hide()	
+			})
+			$(document).on('click','选择器',function(){
+				绑定事件结束后，加入的元素，也能绑定上
+			})
+
+	$.get
+		$.get(url,function(res){
+
+		})
+	$.getJSON
+		$.getJSON(url,function(res){
+
+		})
+	$.each
+		$.each(arr,function(index,value){
+			
+		})
+
+	$('选择器').函数().函数().函数().函数().函数()
+			自带的  
+		选择器 
+			#id
+			.class
+			tagname
+
+				find
+				end
+				next
+				prev
+
+					html() 
+					show() 
+					hide() 
+					css()					
+
+					.val()
+					.attr('属性','值')	
+					.removeAttr('属性')
+
+					.addClass
+					.removeClass
+
+			第三方的  
+				bootstrap   modal()
+				jquery ui   slide
+		事件
+			.on(事件类型，执行函数)
+			简单的登录验证
+
+		怎么和python交互
+			怎么发请求
+			怎么数据交互
+
+				json
+		jquery插件
+
+		$.get(url,function(返回值){
+
+		})
+
+		$.getJSON(url,function(返回值){
+
+		})
+		
+		$.each(obj,function(索引，值){
+
+		})
+		obj.name
+		obj['name']
+	flask_web
+		xx.py
+		templates
+		static
+
+		作业
+			姓名 年龄
+			存在数据库里
+			前端异步 增删查
+
+			升级：可以修改年龄
+

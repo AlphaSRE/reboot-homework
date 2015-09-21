@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./bootstrap.css">
+</head>
+<script src='./jquery.js'></script>
+<body>
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				
+			<div id='zy-show' class="alert alert-success" role="alert" style="height:200px;"></div>
+			<div>
+				
+			<input type="text" id='zy-input'>
+			<br>
+			</div>
+			<button id='zy-submit' class="btn btn-success">提交</button>
+			<button id='zy-clear' class="btn btn-danger">清除</button>
+			</div>
+		</div>
+		<div class="row">
+		</div>
+
+		<div class="row">
+		</div>
+	</div>
+	<script>
+		$('#zy-submit').on('click',function(){
+			var zyinput = $('#zy-input').val()
+			$('#zy-show').append(zyinput+'<br>')
+		})
+		$('#zy-clear').on('click',function(){
+			$('#zy-show').html('')
+			$('#zy-input').val('')
+		})
+	</script>
+	
+</body>
+</html>

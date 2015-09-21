@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<link rel="stylesheet" href="./bootstrap.css">
+<style>
+	.bgred{
+		background-color: red;
+	}
+</style>
+</head>
+<body><!-- 
+	<div id='test'></div> -->
+
+	<div class="container">
+		<div class="row">
+			<button class="btn btn-default delete-btn">删除</button>
+			<button class="btn btn-default delete-btn">删除</button>
+			<button class="btn btn-default delete-btn">删除</button>
+			<button class="btn btn-default delete-btn">删除</button>
+			<!-- <div class="col-md-2" id='left-bar'>
+			<p class='content'>123</p>
+			<input type="button" class="btn btn-success" abc='a' data-id='3' value='click me!'>
+			</div>
+			<div class="col-md-10" id='right-bar'>
+				<p class='content'>1</p>
+				<p class='content'>2</p>
+				<p>3</p>
+			</div> -->
+		</div>
+		<div class="col-md-10" id='right-bar'>
+			<form class="form-inline">
+			  <div class="form-group">
+			    <label>Name</label>
+			    <input type="text" class="form-control" id="user-input">
+			  </div>
+			  <div class="form-group">
+			    <label>Password</label>
+			    <input type="password" class="form-control" id="pwd-input">
+			  </div>
+			  <button id='submit-btn' type="button" class="btn btn-default">submit</button>
+			</form>
+		</div>
+	</div>
+	<script src='./jquery.js'></script>
+	<script>
+	// 点击高亮
+		$('.delete-btn').on('click',function(){
+			$('.delete-btn').removeClass('btn-danger').addClass('btn-default')
+			$(this).addClass('btn-danger').removeClass('btn-default')
+			
+		})
+
+		// $('#submit-btn').on('click',function(){
+		// 	if($('#user-input').val()=='admin'){
+		// 		if($('#pwd-input').val()==123){
+		// 			alert('ok')
+		// 		}else{alert('pwd is wrong')}
+		// 	}else{alert('no user')}
+		// })
+		$('#submit-btn').on('click',function(){
+			var user = $('#user-input').val()
+			var pwd = $('#pwd-input').val()
+			if(user == 'admin' && pwd == 123){
+				alert('okok')
+			}else{
+				alert('wrong')
+			}
+		})
+
+
+
+		// this
+		// $('.delete-btn').on('click',function(){
+		// 	$(this).hide(1000).show(1000)
+		// })
+		// $('#right-bar .content').html('hello world')
+		// $('#left-bar').next().find('.content').html('hello world')
+		// 				.end().css('color','red')
+					  // .css('color','red')
+					  // .hide(1000)
+					  // .show(1000)
+		// var a = 'hello reboot'
+		// $('#test').html(a).hide(2000)
+	</script>
+<!-- 	<script>
+		var a = 'hello world'
+		var arr = [1,2,3,'hello']
+		var obj = {
+			'name':'reboot',
+			'age':123
+		}
+		obj['name'] = 'wd'
+		arr[0] = 100
+
+		console.log(1+43)
+		if(false){
+			console.log(1)
+		}else{
+			console.log(2)
+		}
+	</script> -->
+</body>
+</html>
