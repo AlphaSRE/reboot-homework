@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<link rel="stylesheet" href="/static/bootstrap.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+		<div class='col-md-5' id='left-bar'>
+			<button id='left-btn'>
+				
+			</button>
+			<p id='left-text'></p>
+		</div>
+		<div class='col-md-7'>
+			<table id='right-table' class='table table-bordered'>
+			</table>
+		</div>
+		</div>
+	</div>
+	<script src='/static/jquery.js'></script>
+	<script>
+		$('#left-btn').on('click',function(){
+		var str = ''
+		$.getJSON('/get_data',function(res){
+			$.each(res,function(index,value){
+				str = str + '<tr><td>'+value['name']+'</td><td>'+value['age'] + '</td></tr>'
+			})
+			$('#right-table').html(str)
+			console.log(res)
+	})
+	})
+		$.get('/get_str',function(res){
+			$('#left-btn').html(res)
+	})
+//		$('#left-btn').on('click',function(){
+//		$.get('/get_text',function(res){
+//			$('#left-text').html(res)
+//	})
+//			
+//	})
+	</script>
+</body>
+</html>

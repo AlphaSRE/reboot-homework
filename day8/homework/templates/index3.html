@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./static/css/bootstrap.css">
+</head>
+<style>
+    #test{
+      margin-top: 100px;
+    }
+</style>
+<body>
+    <div id="test" class="row">
+<div class="alert alert-danger" role="alert">用户已删除</div>
+      <div class="col-md-4"></div>
+    <form class="navbar-form navbar-left" role="add" action="/add">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="姓名" name="name">
+        <input type="text" class="form-control" placeholder="年龄" name="age">
+      </div>
+      <button type="submit" class="btn btn-default">添加</button>
+      
+    </form>
+    </div>
+    <br>
+    <div class="container">
+      <div class="col-md-2"></div>
+    <table class="table table-striped table-bordered table-hover table-condensed" width="100">
+    	<tr>
+		<td>姓名</td>
+		<td>年龄</td>
+		<td>删除</td>
+    	</tr>
+      {% for name,age in users.iteritems() %}
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ age }}</td>
+          <td><a href="/delete?name={{ name }}">delete</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+          <div class="col-md-2"></div>
+    </div>
+</body>
+</html>
