@@ -1,11 +1,12 @@
 from flask import render_template, request
 import MySQLdb as mysql
+import json
 
 def con_mysql():
     db = mysql.connect(user="reboot", passwd="reboot123", db="guoshuyi", charset="utf8")
     return db
 
-def get_results(html='index.html'):
+def get_results():
     users = {}
     db = con_mysql()
     cur = db.cursor()
@@ -14,7 +15,8 @@ def get_results(html='index.html'):
         users[tmp_arr[0]] = tmp_arr[1]
     cur.close()
     db.close()
-    return render_template(html,users=users)
+
+    return json.dumps(users)
 
 def add_user(name,age):
     db = con_mysql()
@@ -31,7 +33,7 @@ def add_user(name,age):
     else:
         cur.close()
         db.close()
-        return get_results('index2.html')
+        return get_results()
 
 def del_user(name):
     db = con_mysql()
